@@ -1,13 +1,18 @@
 package ec.ups.edu.modelo;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
-public class Cliente implements Serializable {
+@Table(name = "autores")
+public class Autor implements Serializable {
 
 	/**
 	 * 
@@ -20,12 +25,12 @@ public class Cliente implements Serializable {
 	private String nombre;
 	@Column(nullable = false)
 	private String apellido;
-	@Column(nullable = false)
-	private int cuenta;
-	@Column(nullable = false)
-	private float saldo;
 	
-	public Cliente() {
+	@ManyToMany
+	@JoinColumn(name = "aut_libro")
+	private List<Libro> libro;
+	
+	public Autor() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -53,25 +58,21 @@ public class Cliente implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public int getCuenta() {
-		return cuenta;
+	public List<Libro> getLibro() {
+		return libro;
 	}
 
-	public void setCuenta(int cuenta) {
-		this.cuenta = cuenta;
+	public void setLibro(List<Libro> libro) {
+		this.libro = libro;
 	}
 
-	public float getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(float saldo) {
-		this.saldo = saldo;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", cuenta=" + cuenta
-				+ ", saldo=" + saldo + "]";
+		return "Autor [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", libro=" + libro + "]";
 	}
+	
 }
