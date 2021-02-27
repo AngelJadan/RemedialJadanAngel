@@ -15,10 +15,10 @@
 	xsi:schemaLocation="
         http://xmlns.jcp.org/xml/ns/persistence
         http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-   <persistence-unit name="examenFinalPersistenceUnit">
+   <persistence-unit name="AngelJadanRemedialPersistenceUnit">
       <!-- If you are running in a production environment, add a managed
          data source, this configuration uses the JakartaEE default data source is just for development and testing! -->
-      <jta-data-source>java:jboss/datasources/AngelJadanRemedialCliente</jta-data-source>
+      <jta-data-source>java:jboss/datasources/AngelJadanRemedial</jta-data-source>
       <properties>
 
          <property name="javax.persistence.schema-generation.database.action" value="update"/>
