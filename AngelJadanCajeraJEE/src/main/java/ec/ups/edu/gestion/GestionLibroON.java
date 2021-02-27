@@ -22,6 +22,11 @@ public class GestionLibroON {
 	@Inject
 	private AutorDAO autDAO;
 	
+	private Libro libro;
+	public GestionLibroON() {
+		libro = new Libro();
+	}
+	
 	public boolean saveLibro(Libro libro) {
 		boolean estado =  false;
 		try {
@@ -40,6 +45,16 @@ public class GestionLibroON {
 			e.printStackTrace();
 		}finally {
 			return categoria;
+		}
+	}
+	public List<Libro> libros(){
+		List<Libro> lista = new ArrayList<Libro>();
+		try {
+			lista = libDAO.consultar();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return lista;
 		}
 	}
 	public List<Categoria> categorias(){
@@ -62,4 +77,27 @@ public class GestionLibroON {
 			return lista;
 		}
 	}
+	public boolean reservar(String titulo, int stock) {
+		boolean estado = false;
+		int newStock = stock-1;
+		try {
+			libro.setTitulo(titulo);
+			libro.setStock(newStock);
+			estado = libDAO.update(libro);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return estado;
+		}
+	}
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
+	}
+	
+	
 }
