@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body>
+<a class="nav-link" href="viewsavecliente.xhtml">Registrar cliente</a>
+	<h:form id="formul">
+	<h:panelGrid columns="1">
+	<h:message style="background-color:green" id="formul" for="formul"/>
+	</h:panelGrid>
+		<h:panelGrid columns="2">
+			<h:outputLabel>Cedula</h:outputLabel>
+			<h:inputText value="#{vistaCajero.cedula}" />
+			<h:outputLabel value="Cuenta" />
+			<h:inputText value="#{vistaCajero.cta}" />
+			<h:commandButton action="#{vistaCajero.buscarCliente()}" value="Buscar cliente" />
+		</h:panelGrid>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Cuenta" />
+			<h:outputLabel value="#{vistaCajero.cliente.cuenta}" />
+			<h:outputLabel>Nombre: </h:outputLabel>
+			<h:outputLabel value="#{vistaCajero.cliente.nombre}" />
+			<h:outputLabel>Apellido: </h:outputLabel>
+			<h:outputLabel value="#{vistaCajero.cliente.apellido}" />
+			<h:outputLabel>Saldo disponible</h:outputLabel>
+			<h:outputLabel value="#{vistaCajero.cliente.saldo}" />
+			<h:outputLabel value="Valor de la recarga" />
+			<h:inputText value="#{vistaCajero.valorRecarga}" />
+			
+			<h:commandButton action="#{vistaCajero.recargar()}" value="Recargar" />
+		</h:panelGrid>
+	</h:form>
+</body> 
+</html>
