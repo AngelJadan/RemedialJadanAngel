@@ -19,14 +19,14 @@ public class CategoriaDAO {
 	@Inject
 	private EntityManager em;
 
-	public List<Autor> consultar()throws SQLException {
-		List<Autor> autores = new ArrayList<Autor>();
+	public List<Categoria> consultar()throws SQLException {
+		List<Categoria> categorias = new ArrayList<Categoria>();
 		try {
 			String sql = "SELECT c FROM Categoria c";			
-			autores = em.createQuery(sql, Autor.class).getResultList();
+			categorias = em.createQuery(sql, Categoria.class).getResultList();
 		} catch (Exception e) {
-			autores=null;
+			categorias=null;
 		}
-		return autores;	
+		return categorias;	
 	}
 }

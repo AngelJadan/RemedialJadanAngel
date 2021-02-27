@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body> 
+
+	<h:form id="form">
+	<h:messages id="form"/>
+		<h:panelGrid columns="2">
+		<h:outputLabel value="Autores" />
+			<h:selectOneMenu value="#{vistaLibro.autor.cedula}">
+					<f:selectItems value="#{vistaLibro.autores}" var="autor"
+						itemLabel="#{autor.nombre}"
+						itemValue="#{autor.cedula}">
+					</f:selectItems>
+				</h:selectOneMenu>
+				
+			<h:outputLabel value="Categorias" />
+			<h:selectOneMenu value="#{vistaLibro.categoria.id}">
+					<f:selectItems value="#{vistaLibro.categorias}" var="categ"
+						itemLabel="#{categ.nombre}"
+						itemValue="#{categ.id}">
+					</f:selectItems>
+				</h:selectOneMenu>
+				
+			<h:outputLabel>Titulo</h:outputLabel>
+			<h:inputText value="#{vistaLibro.libro.titulo}" />
+			
+			<h:outputLabel>Stock</h:outputLabel>
+			<h:inputText value="#{vistaLibro.libro.stock}" />
+			<h:commandButton action="#{vistaLibro.saveLibro()}" value="Guardar" />
+		</h:panelGrid>
+	</h:form>
+
+</body> 
+</html>
